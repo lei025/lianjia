@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>首页</title>
+</head>
+{#<script type="text/javascript" src="static/js/jquery-1.8.2.min.js"></script>#}
+{#<link rel="stylesheet" type="text/css" href="../static/css/index_work.css">#}
+<body >
+{#导航#}
+<div class="container-fluid" >
+  <!-- Content here -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="#">Features</a>
+      <a class="nav-item nav-link" href="#">Pricing</a>
+      <a class="nav-item nav-link disabled" href="#">Disabled</a>
+    </div>
+  </div>
+</nav>
+    <table>
+           <thead>
+            <th>标题</th>
+            <th>所在楼层</th>
+            <th>户型结构</th>
+            <th>房屋朝向</th>
+            <th>装修情况</th>
+            <th>梯户比例</th>
+            <th>产权年限</th>
+            <th>配备电梯</th>
+            <th>交易权属</th>
+            <th>房屋用途</th>
+            <th>房屋年限</th>
+            <th>产权所属</th>
+            <th>状态</th>
+            <th>成交时间</th>
+        </thead>
+
+        <tbody>
+            {% for item in house %}
+                <tr>
+{#   {'property_costs', 'build_type', '_id', 'developers', 'year', 'property_company', 'buildings', 'zone', 'total_house', '采集时间', 'address', 'longitude', 'latitude'}#}
+                    <td>{{ item.标题 }}</td>
+                    <td>{{ item.所在楼层 }}</td>
+                    <td>{{ item.户型结构 }}</td>
+                    <td>{{ item.房屋朝向 }}</td>
+                    <td>{{ item.装修情况 }}</td>
+                    <td>{{ item.梯户比例 }}</td>
+                    <td>{{ item.产权年限 }}</td>
+                    <td>{{ item.配备电梯 }}</td>
+                    <td>{{ item.交易权属 }}</td>
+                    <td>{{ item.房屋用途 }}</td>
+                    <td>{{ item.房屋年限 }}</td>
+                    <td>{{ item.产权所属 }}</td>
+                    <td>{{ item.状态 }}</td>
+                    <td>{{ item.成交时间 }}</td>
+
+                </tr>
+            {% endfor %}
+            <tr>
+
+                <th colspan="6">
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                    {% if house.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page={{ house.previous_page_number }}">Previous</a></li>
+                    {% endif %}
+                    <li class="page-item"><a class="page-link" href="#">{{ house.number }}</a></li>
+                    <li class="page-item"><a class="page-link" href="#">of</a></li>
+                    <li class="page-item"><a class="page-link" href="#">{{ house.paginator.num_pages }}</a></li>
+                  {% if house.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ house.next_page_number }}">Next</a></li>
+                  {% endif %}
+                  </ul>
+                </nav>
+
+{#                    {% if house.has_previous %}#}
+{#                    <a href="?page={{ house.previous_page_number }}"><input type="button" value="上一页"></a>#}
+{#                    {% endif %}#}
+{#                    <span>{{ house.number }} of {{ house.paginator.num_pages }}</span>#}
+{#                    {% if house.has_next %}#}
+{#                        <a href="?page={{ house.next_page_number }}"><input type="button" value="下一页"></a>#}
+{#                    {% endif %}#}
+                </th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script src="/static/js/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="/static/js/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="/static/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
